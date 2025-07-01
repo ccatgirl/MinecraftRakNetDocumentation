@@ -113,13 +113,14 @@ with a Incompatible Protocol Version packet
 | mtu size         | unsigned short | big endian      |
 | use encryption   | bool           | N/A             |
 
-# Acknowledements
+# Ack/Nak
 
 ## Records
 
 A record can either be a single sequence number or a
 range between 2 sequence numbers (if we have 1 and 8
 the numbers will be [1, 2, 3, 4, 5, 6, 7, 8]).
+The receiver should check the validity of the range.
 
 ### Record Packet Structure
 
@@ -138,9 +139,7 @@ the numbers will be [1, 2, 3, 4, 5, 6, 7, 8]).
 | record count     | unsigned short | big endian      |
 | records          | record[]       | N/A             |
 
-if the packet is used for sending the successfully arrived
-packets the packet id is 0xc0. if the packet is used for
-sending the not arrived packets the packet id is 0xa0.
+The packet IDs for Ack and Nak are respectively 0xc0 and 0xa0.
 
 # Frame Sets
 
