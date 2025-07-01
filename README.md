@@ -148,11 +148,14 @@ The packet IDs for Ack and Nak are respectively 0xc0 and 0xa0.
 | id   | name                              | is reliable | is sequenced | is ordered |
 |------|-----------------------------------|-------------|--------------|------------|
 | 0x00 | unreliable                        |             |              |            |  
-| 0x01 | unreliable sequenced              |             | ✔            | ✔          |
+| 0x01 | unreliable sequenced              |             | ✔            |           |
 | 0x02 | reliable                          | ✔           |              |            |
 | 0x03 | reliable ordered                  | ✔           |              | ✔          |
-| 0x04 | reliable sequenced                | ✔           | ✔            | ✔          |
+| 0x04 | reliable sequenced                | ✔           | ✔            |           |
 | 0x05 | unreliable with ACK receipt       |             |              |            | 
 | 0x06 | reliable with ACK receipt         | ✔           |              |            |
 | 0x07 | reliable ordered with ACK receipt | ✔           |              | ✔          |
 
+Sequenced means only the newest packet is taken and packets with older IDs are discarded.
+Ordered means the packets should be guaranteed to arrive in the order they were sent.
+ACK receipt means the peer must send an ACK if it received such a packet it no matter the reliability.
