@@ -156,6 +156,8 @@ The packet IDs for Ack and Nak are respectively 0xc0 and 0xa0.
 | 0x06 | reliable with ACK receipt         | ✔           |              |            |
 | 0x07 | reliable ordered with ACK receipt | ✔           |              | ✔          |
 
-Sequenced means only the newest packet is taken and packets with older IDs are discarded.
-Ordered means the packets should be guaranteed to arrive in the order they were sent.
-ACK receipt means the peer must send an ACK if it received such a packet it no matter the reliability.
+Sequenced means only the newest packet is taken and packets with older IDs are discarded[^reliabilityTypes].
+Ordered means the packets should be guaranteed to arrive in the order they were sent[^reliabilityTypes].
+ACK receipt means the peer must send an ACK if it received such a packet it no matter the reliability[^reliabilityTypes].
+
+[^reliabilityTypes]: http://www.jenkinssoftware.com/raknet/manual/reliabilitytypes.html
