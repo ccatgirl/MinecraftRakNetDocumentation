@@ -157,9 +157,12 @@ Online packets don't have explicit identifiers, they have their own custom bitfi
 | 0x06 | reliable with ACK receipt         | ✔           |              |            |
 | 0x07 | reliable ordered with ACK receipt | ✔           |              | ✔          |
 
+Not all these reliabilities might be written as packets[^packetReliabilityWrites].
+
 Sequenced means only the newest packet is taken and packets with older IDs are discarded[^reliabilityTypes].
 Ordered means the packets should be guaranteed to arrive in the order they were sent[^reliabilityTypes].
 ACK receipt means the peer must send an ACK if it received such a packet it no matter the reliability[^reliabilityTypes].
 
 [^reliabilityTypes]: http://www.jenkinssoftware.com/raknet/manual/reliabilitytypes.html
 [^onlinePacketStructure]: https://vp817.github.io/RakNetProtocolDoc/#set-of-things-required-in-your-implemention
+[^packetReliabilityWrites]: https://github.com/leha-code/RakNet-MCPI/blob/f9e334ddd28ef653f3f342e54e0a4bc4652afcad/Source/ReliabilityLayer.cpp#L2712
