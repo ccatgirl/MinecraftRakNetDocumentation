@@ -139,7 +139,8 @@ The receiver should check the validity of the range.
 | record count     | unsigned short | big endian      |
 | records          | record[]       | N/A             |
 
-The packet IDs for Ack and Nak are respectively 0xc0 and 0xa0.
+Online packets don't have explicit identifiers, they have their own custom bitfield[^onlinePacketStructure].
+~~The packet IDs for Ack and Nak are respectively 0xc0 and 0xa0.~~
 
 # Frame Sets
 
@@ -161,3 +162,4 @@ Ordered means the packets should be guaranteed to arrive in the order they were 
 ACK receipt means the peer must send an ACK if it received such a packet it no matter the reliability[^reliabilityTypes].
 
 [^reliabilityTypes]: http://www.jenkinssoftware.com/raknet/manual/reliabilitytypes.html
+[^onlinePacketStructure]: https://vp817.github.io/RakNetProtocolDoc/#set-of-things-required-in-your-implemention
