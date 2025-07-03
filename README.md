@@ -156,6 +156,7 @@ Online packets don't have explicit identifiers, they have their own custom bitfi
 | 0x05 | unreliable with ACK receipt       |             |              |            | 
 | 0x06 | reliable with ACK receipt         | ✔           |              |            |
 | 0x07 | reliable arranged with ACK receipt | ✔           |              | ✔          |
+Arranged packets are called ordered packets in RakNet's source but this spec uses arranged because it is less confusing.
 
 When your peer receives a packet and ack must be sent no matter the reliability. If you know the program you are communicating with does not use ack receipts it may be safe to not send acks if the packet was unreliable (this is a theory and check the raknet source for yourself to be sure).
 
