@@ -146,22 +146,22 @@ Online packets don't have explicit identifiers, they have their own custom bitfi
 
 ## Reliability Type Table
 
-| id   | name                              | is reliable | is sequenced | is ordered |
+| id   | name                              | is reliable | is sequenced | is arranged |
 |------|-----------------------------------|-------------|--------------|------------|
 | 0x00 | unreliable                        |             |              |            |  
 | 0x01 | unreliable sequenced              |             | ✔            |           |
 | 0x02 | reliable                          | ✔           |              |            |
-| 0x03 | reliable ordered                  | ✔           |              | ✔          |
+| 0x03 | reliable arranged                  | ✔           |              | ✔          |
 | 0x04 | reliable sequenced                | ✔           | ✔            |           |
 | 0x05 | unreliable with ACK receipt       |             |              |            | 
 | 0x06 | reliable with ACK receipt         | ✔           |              |            |
-| 0x07 | reliable ordered with ACK receipt | ✔           |              | ✔          |
+| 0x07 | reliable arranged with ACK receipt | ✔           |              | ✔          |
 
-Not all these reliabilities might be written as packets[^packetReliabilityWrites].
+When your peer receives a packet and ack must be sent no matter the reliability. If you know the program you are communicating with does not use ack receipts it may be safe to not send acks if the packet was unreliable (this is a theory and check the raknet source for yourself to be sure).
 
 Sequenced means only the newest packet is taken and packets with older IDs are discarded[^reliabilityTypes].
-Ordered means the packets should be guaranteed to arrive in the order they were sent[^reliabilityTypes].
-ACK receipt means the peer must send an ACK if it received such a packet it no matter the reliability[^reliabilityTypes].
+Arranged means the packets should be guaranteed to arrive in the order they were sent[^reliabilityTypes].
+ACK receipt is an internal implementation detail[^reliabilityTypes] that isn't sent by Oculus'/Kevin Jenkins' RakNet implementation but might be by third-party libraries. Decide for yourself whether you have to check for it.
 
 [^reliabilityTypes]: http://www.jenkinssoftware.com/raknet/manual/reliabilitytypes.html
 [^onlinePacketStructure]: https://vp817.github.io/RakNetProtocolDoc/#set-of-things-required-in-your-implemention
